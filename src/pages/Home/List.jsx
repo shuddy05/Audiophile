@@ -1,0 +1,59 @@
+import React from "react";
+import Speaker from "../../assets/image-removebg-preview(38).png";
+import Headphone from "../../assets/image-removebg-preview(41) (1).png";
+import Earphone from "../../assets/Group 5.png";
+import icon from "../../assets/Path 2.png";
+import { Link } from "react-router-dom";
+const List = () => {
+  const products = [
+    {
+      id: 1,
+      image: (Headphone),
+      title: "HEADPHONES",
+      button: "SHOP",
+    },
+    {
+      id: 2,
+      image: (Speaker),
+      title: "SPEAKERS",
+      button: "SHOP",
+    },
+    {
+      id: 3,
+      image: (Earphone),
+      title: "EARPHONES",
+      button: "SHOP",
+    },
+  ];
+  return (
+    <div>
+      <div className="flex justify-between">
+        {products.map((product) => {
+          const { id, image, title, button } = product;
+          return (
+            <div
+              key={id}
+              className=" relative w-[350px] max-h-[240px] rounded-[8px] bg-[#F1F1F1] flex flex-col justify-center items-center  "
+            >
+              <img
+                src={image}
+                alt=""
+                className=" absolute top-[-80px] w-[122px] max-h-[160px]  "
+              />
+              <h1 className="text-[18px] mt-[100px] font-bold  ">{title}</h1>
+              <Link to="/headphone">
+                <button className="text-black/50 my-[25px] text-[13px] cursor-pointer w-[57px] h-[18px] flex justify-between items-center ">
+                  {" "}
+                  {button}
+                  <img src={icon} alt="" />
+                </button>
+              </Link>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default List;
