@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 const Globalcard = lazy(() => import("./components/Globalcard"));
 const Navbar = lazy(() => import("./components/Navbar"));
 const Home = lazy(() => import("./pages/Home/Home"));
-const Headphones = lazy(() => import("./pages/Headphones"));
+const Headphones = lazy(() => import("./pages/Headphones/Headphones"));
 const Speakers = lazy(() => import("./pages/Speakers"));
 const Earphones = lazy(() => import("./pages/Earphones"));
+const Error = lazy(() => import("./pages/Error404"));
 function App() {
   return (
     <Suspense>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/earphone" element={<Earphones />} />
         </Routes>
         <Globalcard />
+        {/* <Route path="*" element={<Error />} /> */}
       </Router>
     </Suspense>
   );

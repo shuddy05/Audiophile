@@ -5,22 +5,22 @@ import Typography from "../../components/Typography";
 import { typo2 } from "../../utils/typography";
 import image from "../../assets/Bitmap.png";
 import { Link } from "react-router-dom";
-import earphone from "../../assets/Bitmap (1).png";
+import earphone from "../../assets/earphone.png";
 const ProductDisplay = () => {
   return (
     <main>
       <section className="layout">
-        <div className=" h-[560px] bg-[#D87D4A] relative rounded-[8px] ">
+        <div className=" h-[560px] bg-[#D87D4A] flex flex-col gap-7 justify-center items-center lg:relative rounded-[8px] ">
           <img
             src={SpeakerImage}
             alt=""
-            className="w-[410px] h-[485px] absolute left-[117px] bottom-0 "
+            className=" w-[180px] h-[250px] lg:w-[410px] lg:h-[485px] lg:absolute lg:left-[117px] lg:bottom-0 "
           />
-          <div className="absolute right-[95px] top-[120px] ">
+          <div className="text-center  lg:text-start lg:absolute lg:right-[95px] lg:top-[120px] ">
             {typo2.map((text) => {
               return <Typography key={text.id} {...text} />;
             })}
-            <Button className="bg-black text-white mt-[-100px] " />
+            <Button className="bg-black text-white hover:bg-[#4C4C4C]  mt-[35px]  " />
           </div>
         </div>
         <div
@@ -34,11 +34,11 @@ const ProductDisplay = () => {
             </Link>
           </div>
         </div>
-        <div className="flex justify-between  ">
-          <img src={earphone} alt="" />
-          <div className=" relative ">
-            <div className=" w-[540px] bg-[#F1F1F1] h-[320px] rounded-[8px]   ">
-              <div className="absolute top-[101px] left-[95px]">
+        <div className="flex flex-col md:flex-row gap-5 ">
+          <img src={earphone} alt="" className="md:w-1/2" />
+          <div className=" relative md:w-1/2 ">
+            <div className=" w-full bg-[#F1F1F1] h-[300px] lg:h-full rounded-[8px] flex justify-center items-center   ">
+              <div className="absolute lg:top-[101px] lg:left-[95px]  ">
                 <h1 className="font-bold text-[28px] ">YX1 EARPHONES</h1>
                 <Link>
                   <Button className="border-2 border-black mt-[35px] " />
