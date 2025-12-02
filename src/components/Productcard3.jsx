@@ -14,7 +14,6 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
   };
 
   const handleAddToCart = () => {
-   
     console.log(`Added ${quantity} x ${title} to cart`);
     alert(`Added ${quantity} x ${title} to cart`);
   };
@@ -37,7 +36,6 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
         <p className="font-bold text-[18px] ">{price}</p>
 
         <div className="flex items-center gap-4">
-       
           <div className="flex items-center bg-[#F1F1F1]">
             <button
               onClick={handleDecrease}
@@ -58,7 +56,7 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
 
           <button
             onClick={handleAddToCart}
-            className="bg-[#D87D4A] hover:bg-[#FBAF85] text-white px-8 py-3"
+            className="text-[13px] bg-[#D87D4A] hover:bg-[#FBAF85] text-white px-8 py-3"
           >
             ADD TO CART
           </button>
@@ -67,5 +65,5 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
     </section>
   );
 };
-// w-[328px] w-[398px]
+
 export default ProductCard3;
