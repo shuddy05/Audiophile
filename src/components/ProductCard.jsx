@@ -1,6 +1,6 @@
 import React from "react";
-
-const ProductCard = ({ category, image, title, description }) => {
+import { Link } from "react-router-dom";
+const ProductCard = ({ id, category, image, title, description }) => {
   return (
     <div className="flex flex-col lg:flex-row justify-between items-center text-black gap-[32px] mb-[120px] px-[24px] lg:px-[50px] text-black  ">
       <div className="bg-[#F1F1F1] rounded-[8px] w-full lg:max-w-[540px] lg:max-h-[560px]  flex items-center justify-center p-[40px] ">
@@ -16,12 +16,15 @@ const ProductCard = ({ category, image, title, description }) => {
         <p className="  mx-auto lg:mx-0 text-[15px] leading-[25px] tracking-0 text-black/50  ">
           {description}
         </p>
-        <button
-          type="button"
-          className="w-[160PX] h-[48px] p-3 cursor-pointer bg-[#D87D4A] hover:bg-[#FBAF85] text-white  text-[13px] "
-        >
-          SEE PRODUCT
-        </button>
+
+        <Link to={`/product/${id}`}>
+          <button
+            type="button"
+            className="w-[160PX] h-[48px] p-3 cursor-pointer bg-[#D87D4A] hover:bg-[#FBAF85] text-white  text-[13px] "
+          >
+            SEE PRODUCT
+          </button>
+        </Link>
       </div>
     </div>
   );

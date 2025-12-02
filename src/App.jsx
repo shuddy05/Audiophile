@@ -7,6 +7,7 @@ const Home = lazy(() => import("./pages/Home/Home"));
 const Headphones = lazy(() => import("./pages/Headphones/Headphones"));
 const Speakers = lazy(() => import("./pages/Speakers"));
 const Earphones = lazy(() => import("./pages/Earphones"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 const Error = lazy(() => import("./pages/Error404"));
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/headphone" element={<Headphones />} />
           <Route path="/speaker" element={<Speakers />} />
           <Route path="/earphone" element={<Earphones />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
         </Routes>
         <Globalcard />
         {/* <Route path="*" element={<Error />} /> */}

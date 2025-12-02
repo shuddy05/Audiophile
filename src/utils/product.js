@@ -13,6 +13,9 @@ export const headphone = [
       description:
         "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
       image: headphone1,
+      
+
+
     },
   ],
   [
@@ -39,7 +42,7 @@ export const headphone = [
 export const speaker = [
   [
     {
-      id: 1,
+      id: 4,
       title: " ZX9 SPEAKER",
       description:
         "Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
@@ -49,7 +52,7 @@ export const speaker = [
 
   [
     {
-      id: 1,
+      id: 5,
 
       title: " ZX9 SPEAKER",
       description:
@@ -61,7 +64,7 @@ export const speaker = [
 
 export const earphone = [
   {
-    id: 1,
+    id: 6,
     title: " YX1 WIRELESS EARPHONES",
     description:
       "Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.",

@@ -1,13 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Button = ({ type, className }) => {
+const Button = ({ type, className, id }) => {
   return (
-    <button
-      type={type}
-      className={` w-[160PX] h-[48px] p-3 cursor-pointer  text-[13px] ${className}`}
-    >
-      SEE PRODUCT
-    </button>
+    <Link to={`/product/${id}`}>
+      <button
+        type={type}
+        className={` w-[160PX] h-[48px] p-3 cursor-pointer  text-[13px] ${className}`}
+      >
+        SEE PRODUCT
+      </button>
+    </Link>
   );
 };
 

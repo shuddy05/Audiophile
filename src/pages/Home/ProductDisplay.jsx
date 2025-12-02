@@ -4,7 +4,6 @@ import Button from "../../components/Button";
 import Typography from "../../components/Typography";
 import { typo2 } from "../../utils/typography";
 import image from "../../assets/Bitmap.png";
-import { Link } from "react-router-dom";
 import earphone from "../../assets/earphone.png";
 const ProductDisplay = () => {
   return (
@@ -29,9 +28,8 @@ const ProductDisplay = () => {
         >
           <div className=" absolute z-10 top-[101px] left-[95px] ">
             <h1 className="font-bold text-[28px] ">ZX7 SPEAKER</h1>
-            <Link>
-              <Button className="border-2 border-black mt-[35px] " />
-            </Link>
+
+            <Button className="border-2 border-black mt-[35px] " />
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-5 ">
@@ -40,9 +38,8 @@ const ProductDisplay = () => {
             <div className=" w-full bg-[#F1F1F1] h-[300px] lg:h-full rounded-[8px] flex justify-center items-center   ">
               <div className="absolute lg:top-[101px] lg:left-[95px]  ">
                 <h1 className="font-bold text-[28px] ">YX1 EARPHONES</h1>
-                <Link>
-                  <Button className="border-2 border-black mt-[35px] " />
-                </Link>
+
+                <Button className="border-2 border-black mt-[35px] " />
               </div>
             </div>
           </div>

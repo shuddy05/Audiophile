@@ -4,7 +4,7 @@ import ProductCard2 from "../../components/ProductCard2";
 import { headphone } from "../../utils/product";
 import List from "../../components/List";
 const Headphones = () => {
-  console.log(headphone);
+  
 
   return (
     <main>
