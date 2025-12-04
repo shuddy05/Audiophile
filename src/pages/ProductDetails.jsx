@@ -24,14 +24,16 @@ const ProductDetails = () => {
           Go Back
         </button>
         <div>
-          <ProductCard3 {...product} />;
+          <ProductCard3 {...product} />
         </div>
 
         <div className="flex flex-col lg:flex-row justify-between ">
-          <Feature feature={product.feature} />
+          <Feature feature1={product.feature1} feature2={product.feature2} />
           <InTheBox inTheBox={product.inTheBox} />
         </div>
-        <div></div>
+        <div>
+          <ProductGallery gallery={product.gallery} />
+        </div>
       </section>
     </main>
   );
