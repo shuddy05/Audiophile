@@ -32,9 +32,16 @@ const Navbar = () => {
         <div className="flex gap-8 text-[13px] font-bold tracking-wider">
           <NavLinks />
         </div>
-        <div>
-          <IoMdCart className="w-6 h-6 cursor-pointer hover:text-orange-400 transition-colors" />
-        </div>
+        <Link to="/cart">
+          <div className="relative">
+            <IoMdCart className="w-6 h-6 cursor-pointer hover:text-orange-400 transition-colors" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                {cartCount}
+              </span>
+            )}
+          </div>
+        </Link>
       </nav>
 
       <nav className="  flex lg:hidden justify-between items-center layout text-white border-b border-white/20 sticky z-57 ">
@@ -49,14 +56,16 @@ const Navbar = () => {
           <img src={logo} alt="" />
         </NavLink>
 
-        <div className="relative">
-          <IoMdCart className="w-6 h-6 cursor-pointer hover:text-orange-400 transition-colors" />
-          {cartCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
-              {cartCount}
-            </span>
-          )}
-        </div>
+        <Link to="/cart">
+          <div className="relative">
+            <IoMdCart className="w-6 h-6 cursor-pointer hover:text-orange-400 transition-colors" />
+            {cartCount > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                {cartCount}
+              </span>
+            )}
+          </div>
+        </Link>
 
         <div
           className={`fixed left-0 top-0 w-full h-screen bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${

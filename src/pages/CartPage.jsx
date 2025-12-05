@@ -1,5 +1,7 @@
 import React from "react";
 import { useCart } from "../CartContext";
+import { ShoppingCart, Trash2, Plus, Minus } from "lucide-react"; // Add this import
+
 const CartPage = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } =
     useCart();
@@ -107,7 +109,7 @@ const CartPage = () => {
               </div>
             </div>
 
-            <button className="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+            <button className="w-full bg-[#D87D4A] text-white py-3 rounded-lg font-semibold hover:bg-[#FBAF85] transition-colors">
               Proceed to Checkout
             </button>
           </div>
