@@ -1,6 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useCart } from "../CartContext";
+
 const ProductCard3 = ({ category, image, title, description, price }) => {
+  const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
+
   const [quantity, setQuantity] = useState(1);
 
   const handleIncrease = () => {
@@ -13,13 +24,13 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
     }
   };
 
-  const handleAddToCart = () => {
-    console.log(`Added ${quantity} x ${title} to cart`);
-    alert(`Added ${quantity} x ${title} to cart`);
-  };
+  // const handleAddToCart = () => {
+  //   console.log(`Added ${quantity} x ${title} to cart`);
+  //   alert(`Added ${quantity} x ${title} to cart`);
+  // };
 
   return (
-    <section className="flex flex-col lg:flex-row justify-between items-center text-black gap-[32px] mb-[120px] px-[24px] lg:px-[50px] text-black  ">
+    <section className="flex flex-col lg:flex-row justify-between items-center text-black gap-[32px]  text-black  ">
       <div className="bg-[#F1F1F1] rounded-[8px] w-full lg:max-w-[540px] lg:max-h-[560px]  flex items-center justify-center p-[40px] ">
         <img src={image} alt="" />
       </div>
@@ -39,7 +50,7 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
           <div className="flex items-center bg-[#F1F1F1]">
             <button
               onClick={handleDecrease}
-              className="px-4 py-4 text-black/50 hover:text-[#D87D4A] font-bold transition-colors"
+              className="px-4 py-4 cursor-pointer text-black/50 hover:text-[#D87D4A] font-bold transition-colors"
             >
               -
             </button>
@@ -48,7 +59,7 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
             </span>
             <button
               onClick={handleIncrease}
-              className="px-4 py-4 text-black/50 hover:text-[#D87D4A] font-bold transition-colors"
+              className="px-4 py-4 text-black/50 cursor-pointer hover:text-[#D87D4A] font-bold transition-colors"
             >
               +
             </button>
@@ -56,7 +67,7 @@ const ProductCard3 = ({ category, image, title, description, price }) => {
 
           <button
             onClick={handleAddToCart}
-            className="text-[13px] bg-[#D87D4A] hover:bg-[#FBAF85] text-white px-8 py-3"
+            className="text-[13px] cursor-pointer bg-[#D87D4A] hover:bg-[#FBAF85] text-white px-8 py-3"
           >
             ADD TO CART
           </button>

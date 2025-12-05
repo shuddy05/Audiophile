@@ -45,7 +45,7 @@ const List = () => {
               />
               <h1 className="text-[18px] mt-[100px] font-bold  ">{title}</h1>
               <Link key={id} to={to}>
-                <button className="text-black/50 my-[25px] text-[13px] cursor-pointer w-[57px] h-[18px] flex justify-between items-center ">
+                <button className="text-black/50 my-[25px] text-[13px] hover:text-[#D87D4A] font-bold cursor-pointer w-[57px] h-[18px] flex justify-between items-center ">
                   {button}
                   <img src={icon} alt="" />
                 </button>

@@ -5,7 +5,11 @@ import logo from "../assets/audiophile.png";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMenu } from "react-icons/io5";
 import { useState } from "react";
+import { useCart } from "../CartContext";
 const Navbar = () => {
+  const { getCartCount } = useCart();
+  const cartCount = getCartCount();
+
   const [showMenu, setshowMenu] = useState(false);
   const handleToggleMenu = () => {
     setshowMenu(!showMenu);
@@ -45,8 +49,13 @@ const Navbar = () => {
           <img src={logo} alt="" />
         </NavLink>
 
-        <div>
+        <div className="relative">
           <IoMdCart className="w-6 h-6 cursor-pointer hover:text-orange-400 transition-colors" />
+          {cartCount > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+              {cartCount}
+            </span>
+          )}
         </div>
 
         <div

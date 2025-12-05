@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductGallery = ({ gallery, image, title }) => {
   return (
-    <div className=" flex flex-col lg:flex-row gap-[18px] items-center    ">
+    <div className=" flex flex-col lg:flex-row gap-[18px] items-center     ">
       <div className="space-y-[20px] ">
         <div className=" ">
           <img

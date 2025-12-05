@@ -19,7 +19,10 @@ const ProductDisplay = () => {
             {typo2.map((text) => {
               return <Typography key={text.id} {...text} />;
             })}
-            <Button className="bg-black text-white hover:bg-[#4C4C4C]  mt-[35px]  " />
+            <Button
+              id="/speaker"
+              className="bg-black text-white hover:bg-[#4C4C4C]  mt-[35px]  "
+            />
           </div>
         </div>
         <div
@@ -29,7 +32,10 @@ const ProductDisplay = () => {
           <div className=" absolute z-10 top-[101px] left-[95px] ">
             <h1 className="font-bold text-[28px] ">ZX7 SPEAKER</h1>
 
-            <Button className="border-2 border-black mt-[35px] " />
+            <Button
+              id="/speaker"
+              className="border-2 border-black mt-[35px] hover:bg-black hover:text-white "
+            />
           </div>
         </div>
         <div className="flex flex-col md:flex-row gap-5 ">
@@ -39,7 +45,10 @@ const ProductDisplay = () => {
               <div className="absolute lg:top-[101px] lg:left-[95px]  ">
                 <h1 className="font-bold text-[28px] ">YX1 EARPHONES</h1>
 
-                <Button className="border-2 border-black mt-[35px] " />
+                <Button
+                  id="/earphone"
+                  className="border-2 border-black mt-[35px] hover:bg-black hover:text-white"
+                />
               </div>
             </div>
           </div>

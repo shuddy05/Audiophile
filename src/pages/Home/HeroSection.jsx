@@ -11,7 +11,10 @@ const HeroSection = () => {
           {typo1.map((text) => {
             return <Typography key={text.id} {...text} />;
           })}
-          <Button className="bg-[#D87D4A] text-white mt-5 " />
+          <Button
+            id="/headphone"
+            className="bg-[#D87D4A] text-white mt-5 hover:bg-[#FBAF85] "
+          />
         </div>
         <div className="">
           <img src={image} alt="" className="w-[500px]   " />
@@ -23,7 +26,10 @@ const HeroSection = () => {
             return <Typography key={text.id} {...text} />;
           })}
 
-          <Button className="bg-[#D87D4A] text-white mx-auto  " />
+          <Button
+            id="/headphone"
+            className="bg-[#D87D4A] text-white mx-auto  "
+          />
         </div>
         <div className="absolute w-full  md:min-w-[600px] ">
           <img
