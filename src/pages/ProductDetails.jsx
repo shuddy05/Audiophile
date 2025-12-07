@@ -5,6 +5,7 @@ import ProductCard3 from "../components/Productcard3";
 import Feature from "../utils/Feature";
 import InTheBox from "../utils/InTheBox";
 import ProductGallery from "../utils/ProductGallery";
+import Audiogear from "../components/Audiogear";
 const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const ProductDetails = () => {
         <div>
           <ProductCard3 {...product} />
         </div>
-        <div className="flex flex-col lg:flex-row justify-between lg: justify-start lg:gap-[220px] my-[68px] md:my-[120px] lg:mb-[120px] lg:mt-0  ">
+        <div className="flex flex-col lg:flex-row justify-between lg: justify-start lg:gap-[220px] my-[68px] md:my-[120px] lg:mb-[120px] lg:mt-9  ">
           <div className=" mb-[88px] md:mb-[120px] lg:mb-0 ">
             <Feature feature1={product.feature1} feature2={product.feature2} />
           </div>
@@ -38,6 +39,7 @@ const ProductDetails = () => {
           <ProductGallery gallery={product.gallery} />
         </div>
       </section>
+      <Audiogear />
     </main>
   );
 };

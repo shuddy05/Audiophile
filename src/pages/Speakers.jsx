@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard";
 import { speaker } from "../utils/product";
 import List from "../components/List";
 import ProductCard2 from "../components/ProductCard2";
+import Audiogear from "../components/Audiogear";
 const Speakers = () => {
   return (
     <main>
@@ -28,6 +29,7 @@ const Speakers = () => {
       <div>
         <List />
       </div>
+      <Audiogear />
     </main>
   );
 };

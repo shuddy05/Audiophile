@@ -2,6 +2,7 @@ import React from "react";
 import ProductCard from "../components/ProductCard";
 import { earphone } from "../utils/product";
 import List from "../components/List";
+import Audiogear from "../components/Audiogear";
 const Earphones = () => {
   return (
     <main>
@@ -22,6 +23,7 @@ const Earphones = () => {
           <List />
         </div>
       </section>
+      <Audiogear />
     </main>
   );
 };

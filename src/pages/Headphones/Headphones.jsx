@@ -3,9 +3,8 @@ import ProductCard from "../../components/ProductCard";
 import ProductCard2 from "../../components/ProductCard2";
 import { headphone } from "../../utils/product";
 import List from "../../components/List";
+import Audiogear from "../../components/Audiogear";
 const Headphones = () => {
-  
-
   return (
     <main>
       <section className="bg-black  ">
@@ -31,10 +30,11 @@ const Headphones = () => {
             return <ProductCard key={item.id} {...item} />;
           })}
         </div>
-      </section>
         <div>
           <List />
         </div>
+      </section>
+      <Audiogear />
     </main>
   );
 };

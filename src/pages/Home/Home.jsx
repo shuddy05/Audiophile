@@ -1,6 +1,7 @@
 import HeroSection from "./HeroSection";
 import List from "../../components/List";
 import ProductDisplay from "./ProductDisplay";
+import Audiogear from "../../components/Audiogear";
 // import { useParams } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 // import { earphone, headphone, speaker } from "../../utils/product";
@@ -17,6 +18,7 @@ const Home = () => {
       <section className="layout">
         <ProductDisplay />
       </section>
+        <Audiogear />
     </main>
   );
 };

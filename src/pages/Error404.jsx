@@ -8,7 +8,7 @@ const Error404 = () => {
   const navigate = useNavigate();
 
   return (
-    <main className=" text-white h-screen flex justify-center items-center ">
+    <main className=" text-white h-screen flex justify-center items-center bg-black ">
       <div className=" text-center  ">
         <h1 className="text-xl md:text-7xl ">OOOps!!</h1>
         <h1 className="text-xl md:text-3xl mb-6">404-Page Not Found</h1>
@@ -16,7 +16,7 @@ const Error404 = () => {
           <button
             type="button"
             onClick={() => navigate(-1)}
-            className="bg-white text-[#161D2F]  hover:bg-[#161D2F] hover:text-white p-2.5 md:p-3  rounded-2xl cursor-pointer flex items-center justify-center gap-1 "
+            className="bg-white text-[#161D2F]  hover:bg-[#D87D4A] hover:text-white p-2.5 md:p-3  rounded-2xl cursor-pointer flex items-center justify-center gap-1 "
           >
             {" "}
             <RiArrowGoBackFill />
@@ -26,7 +26,7 @@ const Error404 = () => {
           <Link to="/">
             <button
               type="button"
-              className="bg-white  text-[#161D2F] hover:bg-[#161D2F] hover:text-white p-2.5 md:p-3 rounded-2xl cursor-pointer flex items-center justify-center gap-1 "
+              className="bg-white  text-[#161D2F] hover:bg-[#D87D4A] hover:text-white p-2.5 md:p-3 rounded-2xl cursor-pointer flex items-center justify-center gap-1 "
             >
               {" "}
               <IoHome />

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useCart } from "../CartContext";
 
 const ProductCard3 = ({ category, image, title, description, price, id }) => {
-  // Add id prop
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -19,9 +18,8 @@ const ProductCard3 = ({ category, image, title, description, price, id }) => {
   };
 
   const handleAddToCart = () => {
-    // Create product object from props
     const product = {
-      id: id, // Make sure you pass id as a prop
+      id: id,
       name: title,
       description: description,
       price: price,
@@ -35,8 +33,8 @@ const ProductCard3 = ({ category, image, title, description, price, id }) => {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row justify-between items-center text-black gap-[32px] text-black ">
-      <div className="bg-[#F1F1F1] rounded-[8px] w-full lg:max-w-[540px] lg:max-h-[560px] flex items-center justify-center p-[40px] ">
+    <section className="flex flex-col lg:flex-row justify-between items-center text-black gap-8  ">
+      <div className="bg-[#F1F1F1] rounded-lg w-full lg:max-w-[540px] lg:max-h-[560px] flex items-center justify-center p-[40px] ">
         <img src={image} alt="" />
       </div>
       <div className="flex-1 max-w-[445px] text-left">
@@ -77,7 +75,7 @@ const ProductCard3 = ({ category, image, title, description, price, id }) => {
                 : "bg-[#D87D4A] hover:bg-[#FBAF85] text-white"
             }`}
           >
-            {added ? "✓ ADDED TO CART" : "ADD TO CART"}
+            {added ? "ADDED TO CART" : "ADD TO CART"}
           </button>
         </div>
       </div>
