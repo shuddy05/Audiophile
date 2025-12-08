@@ -11,10 +11,10 @@ const CartPage = ({ isOpen, onClose }) => {
     onClose();
     navigate("/checkout");
   };
-  // const handleEmptyCart = async () => {
-  //   onClose();
-  //   navigate("/");
-  // };
+  const handleEmptyCart = async () => {
+    onClose();
+    navigate("/");
+  };
 
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } =
     useCart();
@@ -41,12 +41,12 @@ const CartPage = ({ isOpen, onClose }) => {
         {cartItems.length === 0 ? (
           <div className="text-center py-8 text-black/50 flex flex-col gap-3 ">
             Your cart is empty
-            {/* <button
+            <button
               className=" cursor-pointer bg-[#D87D4A] hover:bg-[#FBAF85] rounded-md text-white py-3 text-sm font-boldx"
               onClick={handleEmptyCart}
             >
               Add To Cart
-            </button> */}
+            </button>
           </div>
         ) : (
           <section>

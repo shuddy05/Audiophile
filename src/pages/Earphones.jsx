@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import { earphone } from "../utils/product";
 import List from "../components/List";
 import Audiogear from "../components/Audiogear";
 const Earphones = () => {
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, []);
   return (
     <main>
       <section className="bg-black  ">

@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/audiophile.png";
 import { IoMdCart } from "react-icons/io";
-
+import { Facebook, Twitter, Instagram } from "lucide-react";
 const Globalcard = () => {
   return (
     <main className="">
@@ -28,18 +28,18 @@ const Globalcard = () => {
               and visit our demo facility - we’re open 7 days a week.
             </p>
             <div className=" hidden md:flex items-center gap-3">
-              <IoMdCart className="w-[23px] h-[20px] " />
-              <IoMdCart className="w-[23px] h-[20px] " />
-              <IoMdCart className="w-[23px] h-[20px] " />
+              <Facebook className="w-[23px] h-[20px] " />
+              <Twitter className="w-[23px] h-[20px] " />
+              <Instagram className="w-[23px] h-[20px] " />
             </div>
           </div>
           <p className="font-bold text-[15px] text-white/50 text-center md:text-start ">
             Copyright {new Date().getFullYear()}. All Rights Reserved
           </p>
           <div className=" md:hidden flex items-center justify-center mt-[40px] gap-3">
-            <IoMdCart className="w-[23px] h-[20px] " />
-            <IoMdCart className="w-[23px] h-[20px] " />
-            <IoMdCart className="w-[23px] h-[20px] " />
+            <Facebook className="w-[23px] h-[20px] " />
+            <Twitter className="w-[23px] h-[20px] " />
+            <Instagram className="w-[23px] h-[20px] " />
           </div>
         </div>
       </footer>

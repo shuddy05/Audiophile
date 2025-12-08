@@ -175,5 +175,6 @@ export const earphone = [
     ],
   },
 ];
+export const products = [earphone, headphone, speaker];
 
 export default { earphone, headphone, speaker };

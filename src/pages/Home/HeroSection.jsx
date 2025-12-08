@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 const HeroSection = () => {
   return (
     <section className=" bg-black  ">
-      <div className=" hidden layout w-full   bg-black text-white h-[729px]  lg:flex  items-center justify-center gap-30   ">
+      <div className=" hidden layout   bg-black text-white h-[729px]  lg:flex  items-center justify-center gap-30   ">
         <div className="  ">
           {typo1.map((text) => {
             return <Typography key={text.id} {...text} />;
@@ -20,7 +20,7 @@ const HeroSection = () => {
           <img src={image} alt="" className="w-[500px]   " />
         </div>
       </div>
-      <div className=" lg:hidden  h-[500px] md:h-[650px]  w-full  text-white text-center flex justify-center items-center relative    ">
+      <div className=" lg:hidden  h-[500px] md:h-[650px]    text-white text-center flex justify-center items-center relative    ">
         <div className="flex flex-col gap-8 z-10  ">
           {typo1.map((text) => {
             return <Typography key={text.id} {...text} />;

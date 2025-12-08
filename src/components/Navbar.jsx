@@ -13,7 +13,7 @@ const Navbar = () => {
   const cartCount = getCartCount();
 
   const [showMenu, setShowMenu] = useState(false);
-  const [showCart, setShowCart] = useState(false); // Add cart modal state
+  const [showCart, setShowCart] = useState(false); 
 
   const handleToggleMenu = () => {
     setShowMenu(!showMenu);

@@ -4,7 +4,11 @@ import { speaker } from "../utils/product";
 import List from "../components/List";
 import ProductCard2 from "../components/ProductCard2";
 import Audiogear from "../components/Audiogear";
+import { useEffect } from "react";
 const Speakers = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main>
       <section className="bg-black  ">

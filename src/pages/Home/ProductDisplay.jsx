@@ -8,8 +8,8 @@ import earphone from "../../assets/earphone.png";
 const ProductDisplay = () => {
   return (
     <main>
-      <section className="layout">
-        <div className=" h-[560px] bg-[#D87D4A] flex flex-col gap-7 justify-center items-center lg:relative rounded-[8px] ">
+      <section >
+        <div className=" w-full h-[560px] bg-[#D87D4A] flex flex-col gap-7 justify-center items-center lg:relative rounded-[8px] ">
           <img
             src={SpeakerImage}
             alt=""

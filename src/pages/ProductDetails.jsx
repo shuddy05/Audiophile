@@ -1,13 +1,21 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { earphone, headphone, speaker } from "../utils/product";
 import ProductCard3 from "../components/Productcard3";
 import Feature from "../utils/Feature";
 import InTheBox from "../utils/InTheBox";
 import ProductGallery from "../utils/ProductGallery";
 import Audiogear from "../components/Audiogear";
+import RelatedProducts from "../components/RelatedProducts";
+import List from "../components/List";
 const ProductDetails = () => {
   const { id } = useParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
+
   const navigate = useNavigate();
   const allProducts = [
     ...headphone.flat(),
@@ -35,8 +43,10 @@ const ProductDetails = () => {
             <InTheBox inTheBox={product.inTheBox} />
           </div>
         </div>
-        <div>
+        <div className="flex flex-col gap-[90px] md:gap-[120px] lg:gap-[150px] ">
           <ProductGallery gallery={product.gallery} />
+          <RelatedProducts currentProductId={product.id} />
+          <List {...product} />
         </div>
       </section>
       <Audiogear />

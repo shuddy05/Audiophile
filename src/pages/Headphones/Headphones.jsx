@@ -3,8 +3,12 @@ import ProductCard from "../../components/ProductCard";
 import ProductCard2 from "../../components/ProductCard2";
 import { headphone } from "../../utils/product";
 import List from "../../components/List";
+import { useEffect } from "react";
 import Audiogear from "../../components/Audiogear";
 const Headphones = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main>
       <section className="bg-black  ">

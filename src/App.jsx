@@ -24,7 +24,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="*" element={<Error />} />
+          <Route path="*" element={<Error />} />
         </Routes>
         <Globalcard />
       </Router>

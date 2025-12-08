@@ -11,21 +11,21 @@ const List = () => {
       image: Headphone,
       title: "HEADPHONES",
       button: "SHOP",
-      to: "headphone",
+      to: "/headphone",
     },
     {
       id: 2,
       image: Speaker,
       title: "SPEAKERS",
       button: "SHOP",
-      to: "speaker",
+      to: "/speaker",
     },
     {
       id: 3,
       image: Earphone,
       title: "EARPHONES",
       button: "SHOP",
-      to: "earphone",
+      to: "/earphone",
     },
   ];
   return (
@@ -36,7 +36,7 @@ const List = () => {
           return (
             <div
               key={id}
-              className=" relative w-[350px] max-h-[240px] rounded-[8px] bg-[#F1F1F1] flex flex-col justify-center items-center   "
+              className=" relative w-[300px] md:w-[350px] max-h-[240px] rounded-[8px] bg-[#F1F1F1] flex flex-col justify-center items-center   "
             >
               <img
                 src={image}
@@ -44,7 +44,7 @@ const List = () => {
                 className=" absolute top-[-80px] w-[122px] max-h-[160px]  "
               />
               <h1 className="text-[18px] mt-[100px] font-bold  ">{title}</h1>
-              <Link key={id} to={to}>
+              <Link key={id} to={`${to}`}>
                 <button className="text-black/50 my-[25px] text-[13px] hover:text-[#D87D4A] font-bold cursor-pointer w-[57px] h-[18px] flex justify-between items-center ">
                   {button}
                   <img src={icon} alt="" />

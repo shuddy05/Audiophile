@@ -7,6 +7,7 @@ import Audiogear from "../../components/Audiogear";
 // import { earphone, headphone, speaker } from "../../utils/product";
 // import ProductCard3 from "../../components/Productcard3";
 const Home = () => {
+  
   return (
     <main>
       <HeroSection />
