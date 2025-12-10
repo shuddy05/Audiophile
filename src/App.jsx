@@ -13,7 +13,7 @@ const CartPage = lazy(() => import("./pages/CartPage"));
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
 function App() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <Router>
         <Navbar />
         <Routes>
