@@ -33,7 +33,7 @@ const ProductCard3 = ({ category, image, title, description, price, id }) => {
   };
 
   return (
-    <section className="flex flex-col lg:flex-row justify-between items-center text-black gap-8  ">
+    <section className="flex flex-col lg:flex-row justify-between items-center text-black gap-8 lg:px-8  ">
       <div className="bg-[#F1F1F1] rounded-lg w-full lg:max-w-[540px] lg:max-h-[560px] flex items-center justify-center p-[40px] ">
         <img src={image} alt="" />
       </div>

@@ -1,28 +1,15 @@
 import React from "react";
-import { useCart } from "../CartContext";
-import { useNavigate } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
-import { useState } from "react";
-const SuccessModal = () => {
-  const { cartItems, getCartTotal, clearCart } = useCart();
 
-  const subtotal = getCartTotal();
-  const shipping = 50;
-  const vat = subtotal * 0.2;
-  const grandTotal = subtotal + shipping;
-  const handleBackToHome = () => {
-    clearCart();
-    setShowSuccessModal(false);
-    navigate("/");
-  };
-  <section>
+export const SuccessModal = ({ cartItems, grandTotal, onBackToHome }) => {
+  return (
     <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-[540px]  w-full p-8 md:p-12">
+      <div className="bg-white rounded-lg max-w-[540px] w-full p-8 md:p-12">
         <div className="w-16 h-16 bg-[#D87D4A] rounded-full flex items-center justify-center mb-6">
           <CheckCircle className="w-10 h-10 text-white" />
         </div>
 
-        <h2 className="text-2xl md:text-[32px] font-bold mb-4 ">
+        <h2 className="text-2xl md:text-[32px] font-bold mb-4 leading-tight">
           THANK YOU
           <br />
           FOR YOUR ORDER
@@ -43,7 +30,7 @@ const SuccessModal = () => {
                     className="w-10 h-10 object-contain"
                   />
                 </div>
-                <div className="">
+                <div className="grow">
                   <h4 className="font-bold text-[15px]">{cartItems[0].name}</h4>
                   <p className="text-black/50 text-sm">
                     $ {cartItems[0].price?.toLocaleString()}
@@ -69,15 +56,14 @@ const SuccessModal = () => {
             </p>
           </div>
         </div>
+
         <button
-          onClick={handleBackToHome}
-          className="w-full bg-[#D87D4A] hover:bg-[#FBAF85] text-white py-4 font-bold text-[13px] tracking-wider transition-colors"
+          onClick={onBackToHome}
+          className="w-full bg-[#D87D4A] cursor-pointer hover:bg-[#FBAF85] text-white py-4 font-bold text-[13px] tracking-wider transition-colors"
         >
           BACK TO HOME
         </button>
       </div>
     </div>
-  </section>;
+  );
 };
-
-export default SuccessModal;

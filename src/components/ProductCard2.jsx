@@ -30,5 +30,4 @@ const ProductCard2 = ({ category, id, image, title, description }) => {
     </div>
   );
 };
-// w-[328px] w-[398px]
 export default ProductCard2;

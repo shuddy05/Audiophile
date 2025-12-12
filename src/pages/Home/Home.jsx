@@ -2,12 +2,12 @@ import HeroSection from "./HeroSection";
 import List from "../../components/List";
 import ProductDisplay from "./ProductDisplay";
 import Audiogear from "../../components/Audiogear";
-// import { useParams } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
-// import { earphone, headphone, speaker } from "../../utils/product";
-// import ProductCard3 from "../../components/Productcard3";
+
+import { useEffect } from "react";
 const Home = () => {
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main>
       <HeroSection />
@@ -19,7 +19,7 @@ const Home = () => {
       <section className="layout">
         <ProductDisplay />
       </section>
-        <Audiogear />
+      <Audiogear />
     </main>
   );
 };

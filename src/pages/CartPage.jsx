@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Audiogear from "../components/Audiogear";
 const CartPage = ({ isOpen, onClose }) => {
-  // const [isNavigating, setIsNavigating] = useState(false);
   const navigate = useNavigate();
 
   const handleCheckout = async () => {
@@ -32,7 +31,7 @@ const CartPage = ({ isOpen, onClose }) => {
           </h2>
           <button
             onClick={clearCart}
-            className="text-black/50 hover:text-black underline text-sm"
+            className="text-black/50 hover:text-black cursor-pointer underline text-sm"
           >
             Remove all
           </button>
@@ -53,6 +52,13 @@ const CartPage = ({ isOpen, onClose }) => {
             <div className="space-y-6 max-h-[300px] overflow-y-auto mb-6">
               {cartItems.map((item) => (
                 <div key={item.id} className="flex items-center gap-4">
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-red-500 p-2 cursor-pointer"
+                  >
+                    X
+                  </button>
+
                   <div className="w-16 h-16 bg-[#F1F1F1] rounded flex-shrink-0 flex items-center justify-center">
                     <img
                       src={item.image}
@@ -62,11 +68,7 @@ const CartPage = ({ isOpen, onClose }) => {
                   </div>
 
                   <div className="flex-grow">
-                    <h3 className="font-bold text-sm">
-                      {item.name
-                        ?.replace(/headphones|wireless|earphones/)
-                        .trim()}
-                    </h3>
+                    <h3 className="font-bold text-sm">{item.name}</h3>
                     <p className="text-black/50 text-sm">
                       $ {item.price?.toLocaleString()}
                     </p>

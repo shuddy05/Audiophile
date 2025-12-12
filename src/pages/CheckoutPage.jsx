@@ -1,32 +1,36 @@
 import React, { useState } from "react";
 import { useCart } from "../CartContext";
 import { useNavigate } from "react-router-dom";
-// import SuccessModal from "../components/SuccessModal";
-import { CheckCircle } from "lucide-react";
-
+import { OrderSummary } from "../components/OrderSUmmary";
+import { SuccessModal } from "../components/SuccessModal";
+import { checkoutSchema } from "../utils/FormValidation";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 const CheckoutPage = () => {
-  const { cartItems, getCartTotal, clearCart } = useCart();
+  const { cartItems, getCartTotal, clearCart, } = useCart();
   const navigate = useNavigate();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("");
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    zip: "",
-    city: "",
-    country: "",
-    eMoneyNumber: "",
-    eMoneyPin: "",
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(checkoutSchema),
+    context: { paymentMethod },
   });
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleCheckout = (data) => {
+    if (data) {
+      setShowSuccessModal(true);
+    } else {
+      const firstError = document.querySelector(".border-red-500");
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+    console.log(data);
   };
 
   const subtotal = getCartTotal();
@@ -34,101 +38,27 @@ const CheckoutPage = () => {
   const vat = subtotal * 0.2;
   const grandTotal = subtotal + shipping;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowSuccessModal(true);
-  };
-
   const handleBackToHome = () => {
     clearCart();
     setShowSuccessModal(false);
     navigate("/");
   };
-  const SuccessModal = () => (
-    <section>
-      <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg max-w-[540px]  w-full p-8 md:p-12">
-          <div className="w-16 h-16 bg-[#D87D4A] rounded-full flex items-center justify-center mb-6">
-            <CheckCircle className="w-10 h-10 text-white" />
-          </div>
-
-          <h2 className="text-2xl md:text-[32px] font-bold mb-4 ">
-            THANK YOU
-            <br />
-            FOR YOUR ORDER
-          </h2>
-
-          <p className="text-black/50 text-[15px] mb-6">
-            You will receive an email confirmation shortly.
-          </p>
-
-          <div className="mb-8 rounded-lg overflow-hidden">
-            <div className="bg-[#F1F1F1] p-6">
-              {cartItems.length > 0 && (
-                <div className="flex items-center gap-4 pb-3 border-b border-black/10">
-                  <div className="w-12 h-12 bg-white rounded flex items-center justify-center">
-                    <img
-                      src={cartItems[0].image}
-                      alt={cartItems[0].name}
-                      className="w-10 h-10 object-contain"
-                    />
-                  </div>
-                  <div className="">
-                    <h4 className="font-bold text-[15px]">
-                      {cartItems[0].name}
-                    </h4>
-                    <p className="text-black/50 text-sm">
-                      $ {cartItems[0].price?.toLocaleString()}
-                    </p>
-                  </div>
-                  <span className="text-black/50 font-bold text-[15px]">
-                    x{cartItems[0].quantity}
-                  </span>
-                </div>
-              )}
-
-              {cartItems.length > 1 && (
-                <p className="text-black/50 text-xs text-center pt-3">
-                  and {cartItems.length - 1} other item(s)
-                </p>
-              )}
-            </div>
-
-            <div className="bg-black p-6">
-              <p className="text-white/50 text-[15px] mb-2">GRAND TOTAL</p>
-              <p className="text-white text-lg font-bold">
-                $ {grandTotal.toLocaleString()}
-              </p>
-            </div>
-          </div>
-          <button
-            onClick={handleBackToHome}
-            className="w-full bg-[#D87D4A] hover:bg-[#FBAF85] text-white py-4 font-bold text-[13px] tracking-wider transition-colors"
-          >
-            BACK TO HOME
-          </button>
-        </div>
-      </div>
-    </section>
-  );
 
   return (
     <div className="bg-[#F1F1F1] min-h-screen">
       <div className="max-w-[1110px] mx-auto px-6 py-8 md:py-16">
         <button
           onClick={() => navigate(-1)}
-          className="text-black/50 hover:text-[#D87D4A] cursor-pointer mb-6 md:mb-10 text-[15px]"
+          className="text-black/50 hover:text-[#D87D4A] mb-6 md:mb-10 text-[15px]"
         >
           Go Back
         </button>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 bg-white rounded-lg p-6 md:p-12">
-            <h1 className="text-2xl md:text-[32px] font-bold mb-8 md:mb-10 tracking-wider">
-              CHECKOUT
-            </h1>
+            <h1 className="text-2xl md:text-[32px] font-bold mb-8 md:mb-10 tracking-wider"></h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(handleCheckout)}>
               <div className="mb-8">
                 <h3 className="text-[#D87D4A] text-[13px] font-bold tracking-wider mb-4">
                   BILLING DETAILS
@@ -139,13 +69,17 @@ const CheckoutPage = () => {
                     <label className="block text-xs font-bold mb-2">Name</label>
                     <input
                       type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
+                      {...register("name")}
                       placeholder="Ibrahim moshood"
-                      className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm "
-                      required
+                      className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                        errors.name ? "border-red-500" : "border-[#CFCFCF]"
+                      }`}
                     />
+                    {errors.name && (
+                      <small className="text-red-500">
+                        {errors.name.message}
+                      </small>
+                    )}
                   </div>
 
                   <div>
@@ -154,13 +88,16 @@ const CheckoutPage = () => {
                     </label>
                     <input
                       type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="ibrahim1@mail.com"
-                      className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm "
-                      required
+                      {...register("email")}
+                      placeholder="ibrahim@mail.com"
+                      className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                        errors.email ? "border-red-500" : "border-[#CFCFCF]"
+                      }`}
                     />
+
+                    <small className="text-[#FC4747]  ">
+                      {errors.email?.message}
+                    </small>
                   </div>
 
                   <div>
@@ -169,13 +106,15 @@ const CheckoutPage = () => {
                     </label>
                     <input
                       type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="+2348108879508"
-                      className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm"
-                      required
+                      {...register("phoneNumber")}
+                      placeholder="+234-555-0136"
+                      className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                        errors.phone ? "border-red-500" : "border-[#CFCFCF]"
+                      }`}
                     />
+                    <small className="text-[#FC4747]  ">
+                      {errors.phoneNumber?.message}
+                    </small>
                   </div>
                 </div>
               </div>
@@ -192,13 +131,15 @@ const CheckoutPage = () => {
                     </label>
                     <input
                       type="text"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleInputChange}
-                      placeholder="Enter your address"
-                      className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm"
-                      required
+                      {...register("address")}
+                      placeholder="1137 Williams Avenue"
+                      className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                        errors.address ? "border-red-500" : "border-[#CFCFCF]"
+                      }`}
                     />
+                    <small className="text-[#FC4747]  ">
+                      {errors.address?.message}
+                    </small>
                   </div>
 
                   <div>
@@ -207,26 +148,30 @@ const CheckoutPage = () => {
                     </label>
                     <input
                       type="text"
-                      name="zip"
-                      value={formData.zip}
-                      onChange={handleInputChange}
+                      {...register("zipCode")}
                       placeholder="10001"
-                      className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm"
-                      required
+                      className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                        errors.zipCode ? "border-red-500" : "border-[#CFCFCF]"
+                      }`}
                     />
+                    <small className="text-[#FC4747]  ">
+                      {errors.zipCode?.message}
+                    </small>
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold mb-2">City</label>
                     <input
                       type="text"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleInputChange}
-                      placeholder="Enter address"
-                      className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm "
-                      required
+                      {...register("city")}
+                      placeholder="New York"
+                      className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                        errors.city ? "border-red-500" : "border-[#CFCFCF]"
+                      }`}
                     />
+                    <small className="text-[#FC4747]  ">
+                      {errors.city?.message}
+                    </small>
                   </div>
 
                   <div>
@@ -235,19 +180,21 @@ const CheckoutPage = () => {
                     </label>
                     <input
                       type="text"
-                      name="country"
-                      value={formData.country}
-                      onChange={handleInputChange}
-                      placeholder="enter country"
-                      className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm "
-                      required
+                      {...register("country")}
+                      placeholder="United States"
+                      className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                        errors.country ? "border-red-500" : "border-[#CFCFCF]"
+                      }`}
                     />
+                    <small className="text-[#FC4747]  ">
+                      {errors.country?.message}
+                    </small>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-[#D87D4A] text-[13px] font-bold  mb-4">
+                <h3 className="text-[#D87D4A] text-[13px] font-bold tracking-wider mb-4">
                   PAYMENT DETAILS
                 </h3>
 
@@ -293,12 +240,17 @@ const CheckoutPage = () => {
                         </label>
                         <input
                           type="text"
-                          name="eMoneyNumber"
-                          value={formData.eMoneyNumber}
-                          onChange={handleInputChange}
+                          {...register("eMoneyNumber")}
                           placeholder="238521993"
-                          className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm "
+                          className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                            errors.eMoneyNumber
+                              ? "border-red-500"
+                              : "border-[#CFCFCF]"
+                          }`}
                         />
+                        <small className="text-[#FC4747]  ">
+                          {errors.eMoneyNumber?.message}
+                        </small>
                       </div>
 
                       <div>
@@ -308,11 +260,17 @@ const CheckoutPage = () => {
                         <input
                           type="text"
                           name="eMoneyPin"
-                          value={formData.eMoneyPin}
-                          onChange={handleInputChange}
+                          {...register("eMoneyPin")}
                           placeholder="6891"
-                          className="w-full px-6 py-4 border border-[#CFCFCF] rounded-lg focus:border-[#D87D4A] outline-none text-sm "
+                          className={`w-full px-6 py-4 border rounded-lg focus:border-[#D87D4A] outline-none text-sm font-bold ${
+                            errors.eMoneyPin
+                              ? "border-red-500"
+                              : "border-[#CFCFCF]"
+                          }`}
                         />
+                        <small className="text-[#FC4747]  ">
+                          {errors.eMoneyPin?.message}
+                        </small>
                       </div>
                     </>
                   )}
@@ -329,76 +287,34 @@ const CheckoutPage = () => {
                   )}
                 </div>
               </div>
+              <button type="submit" id="checkout-submit-btn" className="hidden">
+                Submit
+              </button>
             </form>
           </div>
 
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg p-6 md:p-8 sticky top-8">
-              <h2 className="text-lg font-bold tracking-wider mb-8">SUMMARY</h2>
-
-              <div className="space-y-6 mb-6">
-                {cartItems.map((item) => (
-                  <div key={item.id} className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-[#F1F1F1] rounded flex items-center justify-center">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-12 h-12 object-contain"
-                      />
-                    </div>
-                    <div className="">
-                      <h4 className="font-bold text-[15px]">{item.name}</h4>
-                      <p className="text-black/50 text-sm">
-                        $ {item.price?.toLocaleString()}
-                      </p>
-                    </div>
-                    <span className="text-black/50 font-bold text-[15px]">
-                      x{item.quantity}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="space-y-2 mb-6">
-                <div className="flex justify-between">
-                  <span className="text-black/50 text-[15px]">TOTAL</span>
-                  <span className="font-bold text-lg">
-                    $ {subtotal.toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-black/50 text-[15px]">SHIPPING</span>
-                  <span className="font-bold text-lg">$ {shipping}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-black/50 text-[15px]">
-                    VAT (INCLUDED)
-                  </span>
-                  <span className="font-bold text-lg">
-                    $ {vat.toLocaleString()}
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex justify-between mb-8">
-                <span className="text-black/50 text-[15px]">GRAND TOTAL</span>
-                <span className="font-bold text-lg text-[#D87D4A]">
-                  $ {grandTotal.toLocaleString()}
-                </span>
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                className="w-full bg-[#D87D4A] cursor-pointer hover:bg-[#FBAF85] text-white py-4 font-bold text-[13px] tracking-wider transition-colors"
-              >
-                CONTINUE & PAY
-              </button>
-            </div>
+            <OrderSummary
+              cartItems={cartItems}
+              subtotal={subtotal}
+              shipping={shipping}
+              vat={vat}
+              grandTotal={grandTotal}
+              onSubmit={() =>
+                document.getElementById("checkout-submit-btn").click()
+              }
+            />
           </div>
         </div>
       </div>
 
-      {showSuccessModal && <SuccessModal />}
+      {showSuccessModal && (
+        <SuccessModal
+          cartItems={cartItems}
+          grandTotal={grandTotal}
+          onBackToHome={handleBackToHome}
+        />
+      )}
     </div>
   );
 };
