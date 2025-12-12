@@ -7,7 +7,7 @@ import { checkoutSchema } from "../utils/FormValidation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 const CheckoutPage = () => {
-  const { cartItems, getCartTotal, clearCart, } = useCart();
+  const { cartItems, getCartTotal, clearCart } = useCart();
   const navigate = useNavigate();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -22,14 +22,8 @@ const CheckoutPage = () => {
   });
 
   const handleCheckout = (data) => {
-    if (data) {
-      setShowSuccessModal(true);
-    } else {
-      const firstError = document.querySelector(".border-red-500");
-      if (firstError) {
-        firstError.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    }
+    setShowSuccessModal(true);
+
     console.log(data);
   };
 
