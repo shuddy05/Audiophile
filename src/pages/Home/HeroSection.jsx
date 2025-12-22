@@ -16,9 +16,6 @@ const HeroSection = () => {
             className="bg-[#D87D4A] text-white mt-5 hover:bg-[#FBAF85] "
           />
         </div>
-        <div className="">
-          <img src={image} alt="" className="w-[500px]   " />
-        </div>
       </div>
       <div className=" lg:hidden  h-[500px] md:h-[650px]    text-white text-center flex justify-center items-center relative    ">
         <div className="flex flex-col gap-8 z-10  ">
