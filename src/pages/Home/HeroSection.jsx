@@ -13,8 +13,11 @@ const HeroSection = () => {
           })}
           <Button
             id="/headphone"
-            className="bg-[#D87D4A] text-white mt-5 hover:bg-[#FBAF85] "
+            className="bg-[green] text-white mt-5 hover:bg-[#FBAF85] "
           />
+        </div>
+        <div className="">
+          <img src={image} alt="" className="w-[500px]   " />
         </div>
       </div>
       <div className=" lg:hidden  h-[500px] md:h-[650px]    text-white text-center flex justify-center items-center relative    ">
