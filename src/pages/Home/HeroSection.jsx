@@ -1,4 +1,3 @@
-import React from "react";
 import image from "../../assets/headphone.png";
 import Typography from "../../components/Typography";
 import { typo1 } from "../../utils/typography";
@@ -13,7 +12,7 @@ const HeroSection = () => {
           })}
           <Button
             id="/headphone"
-            className="bg-[green] text-white mt-5 hover:bg-[#FBAF85] "
+            className="bg-[#D87D4A] text-white mt-5 hover:bg-[#FBAF85] "
           />
         </div>
         <div className="">

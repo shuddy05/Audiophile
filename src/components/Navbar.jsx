@@ -4,7 +4,7 @@ import { IoMdCart } from "react-icons/io";
 import logo from "../assets/audiophile.png";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMenu } from "react-icons/io5";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../CartContext";
 import CartPage from "../pages/CartPage";
 
@@ -14,6 +14,10 @@ const Navbar = () => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
+
+  const handleLinkClick = () => {
+    setShowMenu(false);
+  };
 
   const handleToggleMenu = () => {
     setShowMenu(!showMenu);
@@ -25,10 +29,18 @@ const Navbar = () => {
 
   const NavLinks = () => (
     <>
-      <Link to="/">HOME</Link>
-      <Link to="/headphone">HEADPHONES</Link>
-      <Link to="/speaker">SPEAKERS</Link>
-      <Link to="/earphone">EARPHONES</Link>
+      <Link to="/" onClick={handleLinkClick}>
+        HOME
+      </Link>
+      <Link to="/headphone" onClick={handleLinkClick}>
+        HEADPHONES
+      </Link>
+      <Link to="/speaker" onClick={handleLinkClick}>
+        SPEAKERS
+      </Link>
+      <Link to="/earphone" onClick={handleLinkClick}>
+        EARPHONES
+      </Link>
     </>
   );
 

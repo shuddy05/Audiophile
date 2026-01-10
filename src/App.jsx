@@ -9,8 +9,8 @@ const Speakers = lazy(() => import("./pages/Speakers"));
 const Earphones = lazy(() => import("./pages/Earphones"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 const Error = lazy(() => import("./pages/Error404"));
-const CartPage = lazy(() => import("./pages/CartPage"));
 const CheckoutPage = lazy(() => import("./pages/CheckoutPage"));
+const CartPage = lazy(() => import("./pages/CartPage"));
 function App() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
